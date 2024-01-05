@@ -4,7 +4,7 @@ import { Component, Match, Switch, createSignal } from "solid-js";
 function App() {
   const reset = createEventBus();
   return (
-    <div class="w-screen h-screen bg-[#ca8b46]">
+    <div class="w-screen h-dvh bg-[#ca8b46] overflow-y-hidden">
       <Reset emit={reset.emit} />
       <div class="grid grid-cols-4 gap-0 mx-auto max-w-3xl h-full">
         <ViolinString stringName="G" listen={reset.listen}></ViolinString>
