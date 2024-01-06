@@ -7,3 +7,18 @@
     overscroll-behavior: none;
   }
 }
+
+@layer utilities {
+  .slide-move {
+    transition: transform 0.3s ease;
+  }
+  .slide-enter-active,
+  .slide-exit-active {
+    transition: all 0.3s ease;
+  }
+  .slide-enter,
+  .slide-exit-to {
+    transform: translateX(10px);
+    opacity: 0;
+  }
+}
