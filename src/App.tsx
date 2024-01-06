@@ -1,5 +1,5 @@
 import { Emit, Listen, createEventBus } from "@solid-primitives/event-bus";
-import { Component, Match, Switch, createSignal } from "solid-js";
+import { Component, Show, createSignal } from "solid-js";
 
 function App() {
   const reset = createEventBus();
@@ -105,21 +105,21 @@ const ViolinFinger: Component<{
   });
 
   return (
-    <Switch fallback={<div>error</div>}>
-      <Match when={!marked()}>
+    <Show
+      when={marked()}
+      fallback={
         <button
           onclick={() => setMarked(true)}
           class="select-none animate-in duration-100 ease-in-out zoom-in-110 active:scale-110 flex justify-center items-center text-xl font-bold text-yellow-900 bg-white rounded-full border-2 border-yellow-900 sm:text-4xl opacity-85 size-10 sm:size-20"
         >
           {props.num}
         </button>
-      </Match>
-      <Match when={marked()}>
-        <div class="select-none animate-in zoom-in-110 duration-100 ease-in-out active:scale-110 flex justify-center items-center text-xl font-bold text-red-700 bg-red-200 rounded-full border-2 border-red-500 sm:text-4xl opacity-85 size-10 sm:size-20">
-          X
-        </div>
-      </Match>
-    </Switch>
+      }
+    >
+      <div class="select-none animate-in zoom-in-110 duration-100 ease-in-out active:scale-110 flex justify-center items-center text-xl font-bold text-red-700 bg-red-200 rounded-full border-2 border-red-500 sm:text-4xl opacity-85 size-10 sm:size-20">
+        X
+      </div>
+    </Show>
   );
 };
 
